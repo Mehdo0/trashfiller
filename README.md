@@ -133,6 +133,12 @@ node tests/test_parsing.mjs                        # parsing des mails, mots de 
 ~/stage42/.venv/bin/python tests/test_sites_camoufox.py  # les mêmes via camoufox
 ```
 
+Le contrat statique vérifie aussi **les limites que Chrome impose et qui font refuser
+l'extension au chargement** : nom ≤ 75 caractères, description ≤ 132, format de version, icônes
+PNG réellement PNG, permissions connues, `host_permissions` chiffrées, et la politique de
+sécurité des pages d'extension (aucun script inline, aucun `onclick=`, aucune ressource
+distante, ni `eval`, ni `new Function`, ni `import()` dynamique).
+
 Ce que le test de bout en bout prouve réellement : 12 champs d'un vrai formulaire remplis avec
 les bonnes valeurs, `Pays = CH` dans la liste déroulante, cases CGU et newsletter **intactes**,
 champs désactivés, invisibles et jeton caché **intacts**, événements `input`/`change`/`blur`

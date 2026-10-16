@@ -29,6 +29,45 @@ def main() -> int:
     verifier(bool(manifeste.get("name")), "nom manquant dans le manifeste")
     verifier(bool(manifeste.get("version")), "version manquante")
 
+    # 0. les limites imposees par Chrome : depassees, l'extension REFUSE de se charger
+    #    (« The description field in manifest is too long: 150. It exceeds maximum size
+    #    limit of 132 characters. »). Verifie ici pour ne plus jamais le decouvrir au
+    #    moment de charger l'extension.
+    nom = manifeste.get("name", "")
+    description = manifeste.get("description", "")
+    version = manifeste.get("version", "")
+    verifier(len(nom) <= 75, f"nom trop long : {len(nom)} caracteres (limite Chrome : 75)")
+    verifier(bool(description), "description manquante dans le manifeste")
+    verifier(len(description) <= 132,
+             f"description trop longue : {len(description)} caracteres (limite Chrome : 132)")
+    verifier(re.fullmatch(r"\d{1,5}(\.\d{1,5}){0,3}", version) is not None,
+             f"version invalide : {version!r} (1 a 4 nombres separes par des points, sans zero initial)")
+    for nombre in version.split("."):
+        verifier(nombre == "0" or not nombre.startswith("0"),
+                 f"version invalide : zero initial dans « {nombre} »")
+        verifier(int(nombre) <= 65535, f"version invalide : {nombre} > 65535")
+    verifier(manifeste.get("default_locale") is None
+             or (RACINE / "_locales" / manifeste["default_locale"]).is_dir(),
+             "default_locale declare mais _locales/<langue> absent")
+    # une permission inconnue est refusee au chargement : on n'en autorise que des connues
+    connues = {"storage", "activeTab", "scripting", "tabs", "alarms", "notifications",
+               "contextMenus", "cookies", "downloads", "idle", "unlimitedStorage",
+               "webNavigation", "webRequest", "declarativeNetRequest"}
+    inconnues = sorted(set(manifeste.get("permissions", [])) - connues)
+    verifier(not inconnues, f"permissions inconnues de Chrome : {inconnues}")
+    for hote_perm in manifeste.get("host_permissions", []):
+        verifier(hote_perm.startswith("https://") or "://" not in hote_perm,
+                 f"host_permissions non chiffre : {hote_perm}")
+    for cle, valeur in manifeste.get("icons", {}).items():
+        verifier(str(cle).isdigit(), f"taille d'icone non numerique : {cle}")
+        verifier(valeur.endswith(".png"), f"icone non PNG (Chrome exige du PNG) : {valeur}")
+        chemin = RACINE / valeur
+        if chemin.exists():
+            verifier(chemin.read_bytes()[:8] == b"\x89PNG\r\n\x1a\n",
+                     f"fichier declare PNG mais ce n'en est pas un : {valeur}")
+            verifier(chemin.stat().st_size <= 2_000_000,
+                     f"icone trop lourde : {valeur} ({chemin.stat().st_size} o)")
+
     # 1. les fichiers declares existent
     declares = [manifeste["background"]["service_worker"],
                 manifeste["action"]["default_popup"]]
@@ -75,6 +114,23 @@ def main() -> int:
     verifier("http://" not in texte_js.replace("http://127.0.0.1", ""),
              "URL http:// en clair detectee dans le JS")
     verifier("eval(" not in texte_js, "eval() detecte (interdit en MV3)")
+    verifier("new Function(" not in texte_js, "new Function() detecte (interdit en MV3)")
+    verifier("import(" not in texte_js.replace("importScripts(", ""),
+             "import() dynamique detecte (interdit en MV3 pour du code distant)")
+
+    # 5 bis. la politique de securite de contenu des pages d'extension : script-src 'self'.
+    #        Un <script> inline, un onclick= ou un fichier distant fait REFUSER la page par
+    #        Chrome (et souvent sans message clair). On le refuse ici d'abord.
+    verifier(re.search(r"<script(?![^>]*\bsrc=)", html, re.I) is None,
+             "script inline dans popup.html : la CSP de MV3 l'interdit")
+    for motif in (r"\son[a-z]+\s*=\s*\"", r"\son[a-z]+\s*=\s*'"):
+        verifier(re.search(motif, html, re.I) is None,
+                 "gestionnaire d'evenement inline (onclick=...) dans popup.html : interdit par la CSP")
+    for fichier_source in re.findall(r'(?:src|href)="([^"]+)"', html):
+        verifier(not fichier_source.startswith(("http://", "https://", "//")),
+                 f"ressource distante dans popup.html : {fichier_source}")
+        verifier((RACINE / fichier_source).exists(),
+                 f"ressource locale declaree dans popup.html et absente : {fichier_source}")
 
     # 6. host_permissions couvre bien l'API de boite jetable
     hote = manifeste.get("host_permissions", [])
