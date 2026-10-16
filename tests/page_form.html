@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Formulaire de test — inscription</title>
+<style>
+  body { font: 15px/1.5 system-ui, sans-serif; max-width: 640px; margin: 2rem auto; }
+  label { display: block; margin: 10px 0 2px; font-size: 13px; color: #444; }
+  input, select, textarea { width: 100%; padding: 6px; font: inherit; }
+  fieldset { border: 1px solid #ddd; margin: 16px 0; }
+</style>
+</head>
+<body>
+<h1>Créer un compte</h1>
+<form id="inscription" autocomplete="on">
+  <fieldset>
+    <legend>Identité</legend>
+    <label for="prenom">Prénom</label>
+    <input id="prenom" name="first_name" type="text" autocomplete="given-name">
+
+    <label for="nom">Nom de famille</label>
+    <input id="nom" name="last_name" type="text" autocomplete="family-name">
+
+    <label for="pseudo">Nom d'utilisateur</label>
+    <input id="pseudo" name="username" type="text" placeholder="Pseudo souhaité">
+
+    <label for="email">Adresse e-mail</label>
+    <input id="email" name="email" type="email" autocomplete="email" placeholder="vous@exemple.com">
+
+    <label for="tel">Téléphone</label>
+    <input id="tel" name="phone" type="tel" placeholder="+41 ...">
+  </fieldset>
+
+  <fieldset>
+    <legend>Sécurité</legend>
+    <label for="mdp">Mot de passe</label>
+    <input id="mdp" name="password" type="password" autocomplete="new-password">
+
+    <label for="mdp2">Confirmer le mot de passe</label>
+    <input id="mdp2" name="password_confirm" type="password" autocomplete="new-password">
+  </fieldset>
+
+  <fieldset>
+    <legend>Adresse postale</legend>
+    <label for="rue">Adresse</label>
+    <input id="rue" name="street_address" type="text" autocomplete="street-address">
+
+    <label for="npa">Code postal</label>
+    <input id="npa" name="postal_code" type="text">
+
+    <label for="ville">Ville</label>
+    <input id="ville" name="city" type="text" autocomplete="address-level2">
+
+    <label for="pays">Pays</label>
+    <select id="pays" name="country">
+      <option value="">— choisir —</option>
+      <option value="FR">France</option>
+      <option value="CH">Suisse</option>
+      <option value="BE">Belgique</option>
+    </select>
+
+    <label for="naissance">Date de naissance</label>
+    <input id="naissance" name="birthdate" type="date">
+
+    <label for="ddn_note">Remarque (champ libre)</label>
+    <textarea id="ddn_note" name="notes" rows="2"></textarea>
+  </fieldset>
+
+  <fieldset>
+    <legend>Divers</legend>
+    <label><input type="checkbox" id="cgu" name="terms"> J'accepte les conditions générales</label>
+    <label><input type="checkbox" id="news" name="newsletter"> Recevoir la newsletter</label>
+    <label for="societe">Société</label>
+    <input id="societe" name="company" type="text">
+    <input type="hidden" name="csrf_token" value="jeton-initial">
+    <input type="text" name="champ_desactive" id="desactive" value="" disabled>
+    <input type="text" id="poison" name="adresse_secrete" style="display:none">
+  </fieldset>
+
+  <button type="submit">Créer mon compte</button>
+</form>
+
+<script>
+  // Compteurs d'événements : c'est la preuve que les valeurs sont posées comme un
+  // humain les poserait (React/Vue écoutent input/change, pas la propriété value).
+  window.__evts = { input: 0, change: 0, blur: 0 };
+  for (const type of Object.keys(window.__evts)) {
+    document.addEventListener(type, () => { window.__evts[type]++; }, true);
+  }
+</script>
+</body>
+</html>

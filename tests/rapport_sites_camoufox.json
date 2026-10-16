@@ -1,0 +1,66 @@
+[
+ {
+  "site": "GitHub",
+  "url": "https://github.com/signup",
+  "moteur": "camoufox",
+  "statut": "page chargée, formulaire non rendu",
+  "titre": "github.com",
+  "champs_visibles": 0,
+  "capture": "tests/captures/github.png"
+ },
+ {
+  "site": "Mastodon.social",
+  "url": "https://mastodon.social/auth/sign_up",
+  "moteur": "camoufox",
+  "statut": "page chargée, formulaire non rendu",
+  "titre": "S’inscrire - Mastodon",
+  "champs_visibles": 0,
+  "capture": "tests/captures/mastodon-social.png"
+ },
+ {
+  "site": "Vercel",
+  "url": "https://vercel.com/signup",
+  "moteur": "camoufox",
+  "statut": "page chargée, formulaire non rendu",
+  "titre": "Sign Up – Vercel",
+  "champs_visibles": 0,
+  "capture": "tests/captures/vercel.png"
+ },
+ {
+  "site": "Netlify",
+  "url": "https://app.netlify.com/signup",
+  "moteur": "camoufox",
+  "statut": "page chargée, formulaire non rendu",
+  "titre": "Sign up | Netlify",
+  "champs_visibles": 0,
+  "capture": "tests/captures/netlify.png"
+ },
+ {
+  "site": "Reddit",
+  "url": "https://www.reddit.com/register/",
+  "moteur": "camoufox",
+  "statut": "ok",
+  "titre": "Bienvenue sur Reddit",
+  "champs_visibles": 2,
+  "remplis": 1,
+  "non_reconnus": 0,
+  "detail": [
+   {
+    "champ": "email",
+    "selecteur": "email",
+    "signature": "email | email | email",
+    "valeur_ecrite": "camilleperrin42ab12@maxxspace.com"
+   }
+  ],
+  "suspects": []
+ },
+ {
+  "site": "Ricardo.ch",
+  "url": "https://www.ricardo.ch/fr/register",
+  "moteur": "camoufox",
+  "statut": "mur anti-robot",
+  "titre": "Un instant…",
+  "champs_visibles": 0,
+  "capture": "tests/captures/ricardo-ch.png"
+ }
+]

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>TrashFiller</title>
+<link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header>
+    <h1>TrashFiller</h1>
+    <span id="statut">prêt</span>
+  </header>
+
+  <section id="bloc-vide">
+    <p>Aucune identité jetable en mémoire. J'en génère une : boîte mail temporaire + mot de passe aléatoire.</p>
+    <button id="btn-generer" class="principal">Générer une identité</button>
+  </section>
+
+  <section id="identite" hidden>
+    <dl>
+      <dt>Email</dt><dd><span id="id-email">—</span><button class="copie" data-copie="email">copier</button></dd>
+      <dt>Mot de passe</dt><dd><span id="id-mdp">••••••••</span>
+        <button id="btn-voir-mdp" class="copie">voir</button>
+        <button class="copie" data-copie="mot_de_passe">copier</button></dd>
+      <dt>Prénom / Nom</dt><dd><span id="id-nom-complet">—</span>
+        <button class="copie" data-copie="prenom">copier prénom</button>
+        <button class="copie" data-copie="nom">copier nom</button></dd>
+      <dt>Pseudo</dt><dd><span id="id-pseudo">—</span><button class="copie" data-copie="pseudo">copier</button></dd>
+      <dt>Naissance</dt><dd><span id="id-naissance">—</span><button class="copie" data-copie="naissance_fr">copier</button></dd>
+      <dt>Adresse</dt><dd><span id="id-adresse">—</span>
+        <button class="copie" data-copie="adresse">copier</button></dd>
+      <dt>NPA / Ville</dt><dd><span id="id-npa-ville">—</span>
+        <button class="copie" data-copie="npa">copier NPA</button>
+        <button class="copie" data-copie="ville">copier ville</button></dd>
+      <dt>Téléphone</dt><dd><span id="id-telephone">—</span><button class="copie" data-copie="telephone">copier</button></dd>
+    </dl>
+
+    <div class="barre">
+      <button id="btn-remplir" class="principal">Remplir la page</button>
+      <button id="btn-nouvelle">Nouvelle identité</button>
+      <button id="btn-effacer" class="discret">Tout effacer</button>
+    </div>
+
+    <p id="rapport" class="rapport"></p>
+
+    <h2>Boîte jetable <button id="btn-rafraichir" class="copie">rafraîchir</button></h2>
+    <div id="inbox-vide" class="vide">Aucun message pour l'instant. Le lien de validation arrive ici.</div>
+    <div id="messages"></div>
+  </section>
+
+  <footer>
+    Rien n'est conservé hors de ce navigateur. <span id="pied-boite"></span>
+  </footer>
+
+  <script src="popup.js"></script>
+</body>
+</html>

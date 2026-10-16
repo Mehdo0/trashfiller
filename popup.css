@@ -1,0 +1,44 @@
+:root {
+  --fond: #12141a;
+  --carte: #1b1e27;
+  --trait: #2b2f3c;
+  --texte: #e7e9ee;
+  --doux: #9aa1b1;
+  --accent: #4ade80;
+  --accent-fonce: #16351f;
+  --danger: #f87171;
+}
+* { box-sizing: border-box; }
+body {
+  width: 360px; margin: 0; padding: 12px;
+  font: 13px/1.45 -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: var(--fond); color: var(--texte);
+}
+header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 10px; }
+h1 { font-size: 15px; margin: 0; letter-spacing: 0.2px; }
+#statut { font-size: 11px; color: var(--doux); }
+h2 { font-size: 12px; text-transform: uppercase; letter-spacing: 0.6px; color: var(--doux); margin: 14px 0 6px; }
+section#bloc-vide { background: var(--carte); border: 1px solid var(--trait); border-radius: 8px; padding: 12px; }
+section#bloc-vide p { margin: 0 0 10px; color: var(--doux); }
+dl { margin: 0; }
+dt { font-size: 11px; color: var(--doux); margin-top: 6px; }
+dd { margin: 2px 0 0; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+dd span { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 12px; word-break: break-all; }
+button {
+  font: inherit; font-size: 12px; color: var(--texte);
+  background: var(--carte); border: 1px solid var(--trait);
+  border-radius: 6px; padding: 4px 8px; cursor: pointer;
+}
+button:hover { border-color: #3d4252; }
+button.principal { background: var(--accent); color: #05230f; border-color: var(--accent); font-weight: 600; }
+button.discret { color: var(--danger); }
+button.copie { font-size: 11px; padding: 2px 6px; color: var(--doux); }
+.barre { display: flex; gap: 6px; margin-top: 12px; }
+.rapport { font-size: 11px; color: var(--doux); margin: 8px 0 0; white-space: pre-wrap; }
+.vide { font-size: 12px; color: var(--doux); }
+.message { background: var(--carte); border: 1px solid var(--trait); border-radius: 8px; padding: 8px; margin-bottom: 6px; }
+.message .de { font-size: 11px; color: var(--doux); }
+.message .sujet { font-weight: 600; margin: 2px 0 6px; }
+.puces { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px; }
+.puce { font-family: ui-monospace, monospace; font-size: 12px; background: var(--accent-fonce); border: 1px solid #245c36; color: #b9f5cd; border-radius: 5px; padding: 2px 6px; cursor: pointer; }
+footer { margin-top: 14px; font-size: 10.5px; color: #6b7280; }

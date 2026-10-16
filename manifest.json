@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "TrashFiller — comptes jetables",
+  "version": "1.0.0",
+  "description": "Génère une identité jetable (boîte mail temporaire + mot de passe aléatoire) et remplit les formulaires d'inscription en un clic. Rien n'est conservé.",
+  "permissions": ["storage", "activeTab", "scripting"],
+  "host_permissions": ["https://api.mail.tm/*"],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "TrashFiller"
+  },
+  "icons": {
+    "16": "icons/icon-16.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  }
+}

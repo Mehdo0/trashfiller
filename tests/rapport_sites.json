@@ -1,0 +1,265 @@
+[
+ {
+  "site": "GitLab",
+  "url": "https://gitlab.com/users/sign_up",
+  "statut": "ok",
+  "titre": "Sign up · GitLab",
+  "champs_visibles": 6,
+  "remplis": 5,
+  "non_reconnus": 0,
+  "sans_valeur": [],
+  "detail": [
+   {
+    "champ": "prenom",
+    "selecteur": "new_user[first_name]",
+    "signature": "new_user[first_name] | new_user_first_name | text | first name",
+    "valeur_ecrite": "Camille"
+   },
+   {
+    "champ": "nom",
+    "selecteur": "new_user[last_name]",
+    "signature": "new_user[last_name] | new_user_last_name | text | last name",
+    "valeur_ecrite": "Perrin"
+   },
+   {
+    "champ": "pseudo",
+    "selecteur": "new_user[username]",
+    "signature": "new_user[username] | new_user_username | text | username",
+    "valeur_ecrite": "camilleperrin42"
+   },
+   {
+    "champ": "email",
+    "selecteur": "new_user[email]",
+    "signature": "new_user[email] | new_user_email | email | company email",
+    "valeur_ecrite": "camilleperrin42ab12@maxxspace.com"
+   },
+   {
+    "champ": "mot_de_passe",
+    "selecteur": "new_user[password]",
+    "signature": "new_user[password] | new_user_password | new-password | password | password",
+    "valeur_ecrite": "Trash!Aa1Bc2De3"
+   }
+  ],
+  "bandeau_absent_sans_chrome": true,
+  "suspects": []
+ },
+ {
+  "site": "GitHub",
+  "url": "https://github.com/signup",
+  "statut": "page chargée, aucun champ visible",
+  "titre": "github.com",
+  "champs_visibles": 0,
+  "capture": "tests/captures/github.png"
+ },
+ {
+  "site": "Mastodon.social",
+  "url": "https://mastodon.social/auth/sign_up",
+  "statut": "ok",
+  "apres_clic": true,
+  "titre": "S’inscrire - Mastodon",
+  "champs_visibles": 8,
+  "remplis": 7,
+  "non_reconnus": 0,
+  "sans_valeur": [],
+  "detail": [
+   {
+    "champ": "pseudo",
+    "selecteur": "user[account_attributes][username]",
+    "signature": "user[account_attributes][username] | user_account_attributes_username | off | text | identifiant *",
+    "valeur_ecrite": "camilleperrin42"
+   },
+   {
+    "champ": "email",
+    "selecteur": "user[email]",
+    "signature": "user[email] | user_email | username | email | adresse de courriel *",
+    "valeur_ecrite": "camilleperrin42ab12@maxxspace.com"
+   },
+   {
+    "champ": "mot_de_passe",
+    "selecteur": "user[password]",
+    "signature": "user[password] | user_password | new-password | password | mot de passe *",
+    "valeur_ecrite": "Trash!Aa1Bc2De3"
+   },
+   {
+    "champ": "mot_de_passe_confirm",
+    "selecteur": "user[password_confirmation]",
+    "signature": "user[password_confirmation] | user_password_confirmation | confirmation du mot de passe | confirmation du mot de passe | new-password | password",
+    "valeur_ecrite": "Trash!Aa1Bc2De3"
+   },
+   {
+    "champ": "naissance",
+    "selecteur": "user[date_of_birth(3i)]",
+    "signature": "user[date_of_birth(3i)] | user_date_of_birth_3i | dd | jour | bday-day | text | date of birth *",
+    "valeur_ecrite": "1994-03-17"
+   },
+   {
+    "champ": "naissance",
+    "selecteur": "user[date_of_birth(2i)]",
+    "signature": "user[date_of_birth(2i)] | user_date_of_birth_2i | mm | mois | bday-month | text",
+    "valeur_ecrite": "1994-03-17"
+   },
+   {
+    "champ": "naissance",
+    "selecteur": "user[date_of_birth(1i)]",
+    "signature": "user[date_of_birth(1i)] | user_date_of_birth_1i | yyyy | annee | bday-year | text",
+    "valeur_ecrite": "1994-03-17"
+   }
+  ],
+  "bandeau_absent_sans_chrome": true,
+  "suspects": []
+ },
+ {
+  "site": "Hacker News",
+  "url": "https://news.ycombinator.com/login",
+  "statut": "ok",
+  "titre": "",
+  "champs_visibles": 4,
+  "remplis": 4,
+  "non_reconnus": 0,
+  "sans_valeur": [],
+  "detail": [
+   {
+    "champ": "pseudo",
+    "selecteur": "acct",
+    "signature": "acct | username | text",
+    "valeur_ecrite": "camilleperrin42"
+   },
+   {
+    "champ": "mot_de_passe",
+    "selecteur": "pw",
+    "signature": "pw | current-password | password",
+    "valeur_ecrite": "Trash!Aa1Bc2De3"
+   },
+   {
+    "champ": "pseudo",
+    "selecteur": "acct",
+    "signature": "acct | username | text",
+    "valeur_ecrite": "camilleperrin42"
+   },
+   {
+    "champ": "mot_de_passe",
+    "selecteur": "pw",
+    "signature": "pw | new-password | password",
+    "valeur_ecrite": "Trash!Aa1Bc2De3"
+   }
+  ],
+  "bandeau_absent_sans_chrome": true,
+  "suspects": []
+ },
+ {
+  "site": "Bandcamp",
+  "url": "https://bandcamp.com/signup",
+  "statut": "ok",
+  "titre": "Signup | Bandcamp",
+  "champs_visibles": 6,
+  "remplis": 4,
+  "non_reconnus": 1,
+  "sans_valeur": [],
+  "detail": [
+   {
+    "champ": "pseudo",
+    "selecteur": "username-field",
+    "signature": "username-field | username-field | text | username",
+    "valeur_ecrite": "camilleperrin42"
+   },
+   {
+    "champ": "mot_de_passe",
+    "selecteur": "password-field",
+    "signature": "password-field | password-field | new-password | password | password",
+    "valeur_ecrite": "Trash!Aa1Bc2De3"
+   },
+   {
+    "champ": "email",
+    "selecteur": "email-field",
+    "signature": "email-field | email-field | email | email | email",
+    "valeur_ecrite": "camilleperrin42ab12@maxxspace.com"
+   },
+   {
+    "champ": "email",
+    "selecteur": "email-confirm-field",
+    "signature": "email-confirm-field | email-confirm-field | email | email | confirm email",
+    "valeur_ecrite": "camilleperrin42ab12@maxxspace.com"
+   }
+  ],
+  "bandeau_absent_sans_chrome": true,
+  "suspects": []
+ },
+ {
+  "site": "Vercel",
+  "url": "https://vercel.com/signup",
+  "statut": "ok",
+  "apres_clic": true,
+  "titre": "Sign Up – Vercel",
+  "champs_visibles": 2,
+  "remplis": 1,
+  "non_reconnus": 0,
+  "sans_valeur": [],
+  "detail": [
+   {
+    "champ": "pseudo",
+    "selecteur": "identifier",
+    "signature": "identifier | identifierid | username | text",
+    "valeur_ecrite": "camilleperrin42"
+   }
+  ],
+  "bandeau_absent_sans_chrome": true,
+  "suspects": []
+ },
+ {
+  "site": "Netlify",
+  "url": "https://app.netlify.com/signup",
+  "statut": "ok",
+  "apres_clic": true,
+  "titre": "Sign up | Netlify",
+  "champs_visibles": 2,
+  "remplis": 1,
+  "non_reconnus": 0,
+  "sans_valeur": [],
+  "detail": [
+   {
+    "champ": "pseudo",
+    "selecteur": "identifier",
+    "signature": "identifier | identifierid | username | text",
+    "valeur_ecrite": "camilleperrin42"
+   }
+  ],
+  "bandeau_absent_sans_chrome": true,
+  "suspects": []
+ },
+ {
+  "site": "Reddit",
+  "url": "https://www.reddit.com/register/",
+  "statut": "page chargée, aucun champ visible",
+  "titre": "",
+  "champs_visibles": 0,
+  "capture": "tests/captures/reddit.png"
+ },
+ {
+  "site": "Twitch",
+  "url": "https://www.twitch.tv/signup",
+  "statut": "ok",
+  "titre": "S'inscrire - Twitch",
+  "champs_visibles": 1,
+  "remplis": 1,
+  "non_reconnus": 0,
+  "sans_valeur": [],
+  "detail": [
+   {
+    "champ": "email",
+    "selecteur": "email-input",
+    "signature": "email-input | saisir votre adresse e-mail | email | adresse e-mail",
+    "valeur_ecrite": "camilleperrin42ab12@maxxspace.com"
+   }
+  ],
+  "bandeau_absent_sans_chrome": true,
+  "suspects": []
+ },
+ {
+  "site": "Ricardo.ch",
+  "url": "https://www.ricardo.ch/fr/register",
+  "statut": "mur anti-robot",
+  "titre": "Un instant…",
+  "champs_visibles": 0,
+  "capture": "tests/captures/ricardo-ch.png"
+ }
+]
