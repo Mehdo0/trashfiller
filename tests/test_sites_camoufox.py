@@ -62,9 +62,10 @@ def champs_visibles(page) -> int:
             return t;
         };
         return tout()
-            .filter(e => !['hidden','submit','button','reset','file','image','range','color'].includes((e.type||'').toLowerCase()))
+            .filter(e => !['hidden','submit','button','reset','file','image','range','color',
+                            'checkbox','radio'].includes((e.type||'').toLowerCase()))
             .filter(e => !e.disabled && !e.readOnly)
-            .filter(e => e.offsetParent !== null || (e.type||'') === 'date')
+            .filter(e => e.getClientRects().length > 0 || (e.type||'') === 'date')
             .length;
     }""")
 
@@ -82,10 +83,31 @@ def attendre_champs(page, secondes: int = 15) -> int:
     return n
 
 
+def ouvrir_formulaire(page) -> bool:
+    """Comme pour la passe Chrome : sur GitHub, Vercel, Netlify ou Mastodon le formulaire
+    n'existe qu'apres un clic (« Sign up », « Continuer », assistant en plusieurs etapes)."""
+    import re
+    motif = re.compile(r"(sign ?up|s'?inscrire|inscription|créer un compte|creer un compte|"
+                       r"create (an )?account|continue with e-?mail|avec e-?mail|register|"
+                       r"s'inscrire par e-?mail|continuer|suivant|next|continue|"
+                       r"j'?accepte|accepter|i agree)", re.I)
+    for sel in ("button", "a", '[role="button"]'):
+        for el in page.query_selector_all(sel):
+            try:
+                texte = (el.inner_text() or "").strip()
+                if texte and motif.search(texte) and el.is_visible():
+                    el.click(timeout=5000)
+                    page.wait_for_timeout(2500)
+                    return True
+            except Exception:
+                continue
+    return False
+
+
 def capturer(page, nom: str) -> str:
     """Une capture de ce que la page montre vraiment : c'est la seule facon de
     distinguer « formulaire absent » de « formulaire derriere un interstitiel »."""
-    dossier = RACINE / "tests/captures"
+    dossier = RACINE / "tests/captures/camoufox"
     dossier.mkdir(parents=True, exist_ok=True)
     chemin = dossier / f"{nom.lower().replace(' ', '-').replace('.', '-')}.png"
     try:
@@ -106,6 +128,9 @@ def tester(page, nom: str, url: str) -> dict:
 
     res["titre"] = (page.title() or "")[:80]
     visibles = attendre_champs(page)
+    if visibles == 0 and ouvrir_formulaire(page):
+        visibles = attendre_champs(page, secondes=12)
+        res["apres_clic"] = True
     res["champs_visibles"] = visibles
     if visibles == 0:
         titre = (page.title() or "").lower()
@@ -129,6 +154,7 @@ def tester(page, nom: str, url: str) -> dict:
         if motif and len(texte) >= 8 and not re.search(motif, texte):
             suspects.append(f"{f['champ']} <- {f.get('selecteur')} ({f.get('signature', '')[:40]})")
     res.update({"remplis": len(remplis), "non_reconnus": len(rapport.get("non_reconnus", [])),
+                "cases_a_cocher": rapport.get("cases_a_cocher", 0),
                 "detail": remplis, "suspects": suspects})
     return res
 

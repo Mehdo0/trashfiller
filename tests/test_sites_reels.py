@@ -78,9 +78,10 @@ def champs_visibles(page) -> int:
             return t;
         };
         return tout()
-            .filter(e => !['hidden','submit','button','reset','file','image','range','color'].includes((e.type||'').toLowerCase()))
+            .filter(e => !['hidden','submit','button','reset','file','image','range','color',
+                            'checkbox','radio'].includes((e.type||'').toLowerCase()))
             .filter(e => !e.disabled && !e.readOnly)
-            .filter(e => e.offsetParent !== null || (e.type||'') === 'date')
+            .filter(e => e.getClientRects().length > 0 || (e.type||'') === 'date')
             .length;
     }""")
 
@@ -110,7 +111,7 @@ def ouvrir_formulaire(page) -> bool:
 def capturer(page, nom: str) -> str:
     """Une capture de ce que la page montre vraiment : c'est la seule facon de
     distinguer « formulaire absent » de « formulaire derriere un interstitiel »."""
-    dossier = RACINE / "tests/captures"
+    dossier = RACINE / "tests/captures/chrome"
     dossier.mkdir(parents=True, exist_ok=True)
     chemin = dossier / f"{nom.lower().replace(' ', '-').replace('.', '-')}.png"
     try:
@@ -176,6 +177,7 @@ def tester(page, nom: str, url: str) -> dict:
         "non_reconnus": len(rapport.get("non_reconnus", [])),
         "sans_valeur": rapport.get("sans_valeur", []),
         "detail": remplis,
+        "cases_a_cocher": rapport.get("cases_a_cocher", 0),
         "bandeau_absent_sans_chrome": page.evaluate("() => !document.getElementById('__tf_bandeau')"),
     })
 

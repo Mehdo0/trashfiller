@@ -82,21 +82,36 @@ Méthode : chaque page d'inscription réelle est chargée, le remplisseur est in
 mesure. **Aucun formulaire n'est jamais soumis.** Deux moteurs : Chrome headless, puis camoufox
 (Firefox modifié) quand Chrome est bloqué.
 
-| Page | Champs visibles | Remplis | Remarque |
+**Passe Chrome** — 7 pages exploitables sur 10, **23 champs sur 26 = 88 %**, zéro classement
+suspect :
+
+| Page | Champs remplissables | Remplis | Remarque |
 |---|---|---|---|
-| GitLab (inscription) | 6 | 5 | tous les champs utiles |
-| Mastodon.social | 8 | 7 | après un clic sur « Continuer » (assistant en 3 étapes) |
-| Hacker News | 4 | 4 | formulaire de connexion |
-| Bandcamp | 6 | 4 | l'email et sa confirmation sont remplis |
+| GitLab (inscription) | 5 | 5 | tous les champs utiles |
+| Mastodon.social | 7 | 7 | après un clic sur « Continuer » (assistant en 3 étapes) |
+| Hacker News | 4 | 4 | connexion |
+| Bandcamp | 5 | 4 | email et confirmation remplis |
 | Vercel | 2 | 1 | après un clic sur « Sign up » |
 | Netlify | 2 | 1 | après un clic sur « Sign up » |
 | Twitch | 1 | 1 | la suite du formulaire arrive après l'email |
-| Reddit | 2 | 1 | via camoufox ; le 2e champ est une case à cocher, jamais touchée |
 | GitHub | 0 | — | « Accès temporairement restreint » : GitHub bloque l'IP du serveur |
 | Ricardo.ch | 0 | — | mur anti-robot Cloudflare |
+| Reddit | 0 | — | Reddit bloque Chrome ; mesuré en camoufox ci-dessous |
 
-**Bilan : 7 pages exploitables sur 10, 23 champs remplis sur 29 (79 %), zéro classement
-suspect** — chaque champ rempli est revalidé contre ses propres signaux (name, id, label,
+**Passe camoufox** (Firefox modifié) — 4 pages exploitables sur 6, **10 champs sur 10 = 100 %** :
+
+| Page | Champs remplissables | Remplis | Remarque |
+|---|---|---|---|
+| Mastodon.social | 7 | 7 | l'assistant passe en Firefox aussi |
+| Vercel | 1 | 1 | |
+| Netlify | 1 | 1 | |
+| Reddit | 1 | 1 | l'email ; le bouton pub est une case à cocher, laissée intacte |
+| GitHub | 0 | — | formulaire inaccessible depuis ce serveur |
+| Ricardo.ch | 0 | — | mur anti-robot |
+
+**Bilan : 13 pages mesurées, 11 exploitables, 33 champs remplis sur 36 (92 %), zéro classement
+suspect.** Les cases à cocher sont hors décompte : l'extension n'y touche jamais, par
+conception. Chaque champ rempli est revalidé contre ses propres signaux (name, id, label,
 placeholder) par le test, pas seulement compté.
 
 Deux enseignements honnêtes :
@@ -123,7 +138,10 @@ les bonnes valeurs, `Pays = CH` dans la liste déroulante, cases CGU et newslett
 champs désactivés, invisibles et jeton caché **intacts**, événements `input`/`change`/`blur`
 émis, création d'une vraie boîte jetable depuis le popup, et un chemin d'erreur propre quand la
 page interdit l'injection. Les rapports des deux passes sur sites réels sont versionnés
-(`tests/rapport_sites*.json`) avec les captures d'écran (`tests/captures/`).
+(`tests/rapport_sites.json` pour Chrome, `tests/rapport_sites_camoufox.json` pour Firefox) avec
+les captures d'écran de chaque moteur (`tests/captures/chrome/`, `tests/captures/camoufox/`) :
+c'est en les regardant qu'on a compris que GitHub bloquait l'IP du serveur et que Mastodon
+n'était pas muré mais en trois étapes.
 
 ## Notes techniques (les pièges rencontrés)
 

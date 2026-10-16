@@ -6,34 +6,106 @@
   "statut": "page chargée, formulaire non rendu",
   "titre": "github.com",
   "champs_visibles": 0,
-  "capture": "tests/captures/github.png"
+  "capture": "tests/captures/camoufox/github.png"
  },
  {
   "site": "Mastodon.social",
   "url": "https://mastodon.social/auth/sign_up",
   "moteur": "camoufox",
-  "statut": "page chargée, formulaire non rendu",
+  "statut": "ok",
   "titre": "S’inscrire - Mastodon",
-  "champs_visibles": 0,
-  "capture": "tests/captures/mastodon-social.png"
+  "apres_clic": true,
+  "champs_visibles": 7,
+  "remplis": 7,
+  "non_reconnus": 0,
+  "cases_a_cocher": 1,
+  "detail": [
+   {
+    "champ": "pseudo",
+    "selecteur": "user[account_attributes][username]",
+    "signature": "user[account_attributes][username] | user_account_attributes_username | off | text | identifiant *",
+    "valeur_ecrite": "camilleperrin42"
+   },
+   {
+    "champ": "email",
+    "selecteur": "user[email]",
+    "signature": "user[email] | user_email | username | email | adresse de courriel *",
+    "valeur_ecrite": "camilleperrin42ab12@maxxspace.com"
+   },
+   {
+    "champ": "mot_de_passe",
+    "selecteur": "user[password]",
+    "signature": "user[password] | user_password | new-password | password | mot de passe *",
+    "valeur_ecrite": "Trash!Aa1Bc2De3"
+   },
+   {
+    "champ": "mot_de_passe_confirm",
+    "selecteur": "user[password_confirmation]",
+    "signature": "user[password_confirmation] | user_password_confirmation | confirmation du mot de passe | confirmation du mot de passe | new-password | password",
+    "valeur_ecrite": "Trash!Aa1Bc2De3"
+   },
+   {
+    "champ": "jour",
+    "selecteur": "user[date_of_birth(3i)]",
+    "signature": "user[date_of_birth(3i)] | user_date_of_birth_3i | dd | jour | bday-day | text | date of birth *",
+    "valeur_ecrite": "17"
+   },
+   {
+    "champ": "mois",
+    "selecteur": "user[date_of_birth(2i)]",
+    "signature": "user[date_of_birth(2i)] | user_date_of_birth_2i | mm | mois | bday-month | text",
+    "valeur_ecrite": "03"
+   },
+   {
+    "champ": "annee",
+    "selecteur": "user[date_of_birth(1i)]",
+    "signature": "user[date_of_birth(1i)] | user_date_of_birth_1i | yyyy | annee | bday-year | text",
+    "valeur_ecrite": "1994"
+   }
+  ],
+  "suspects": []
  },
  {
   "site": "Vercel",
   "url": "https://vercel.com/signup",
   "moteur": "camoufox",
-  "statut": "page chargée, formulaire non rendu",
+  "statut": "ok",
   "titre": "Sign Up – Vercel",
-  "champs_visibles": 0,
-  "capture": "tests/captures/vercel.png"
+  "apres_clic": true,
+  "champs_visibles": 1,
+  "remplis": 1,
+  "non_reconnus": 0,
+  "cases_a_cocher": 0,
+  "detail": [
+   {
+    "champ": "email",
+    "selecteur": "identifier",
+    "signature": "identifier | identifierid | adresse e-mail ou telephone | username webauthn | text",
+    "valeur_ecrite": "camilleperrin42ab12@maxxspace.com"
+   }
+  ],
+  "suspects": []
  },
  {
   "site": "Netlify",
   "url": "https://app.netlify.com/signup",
   "moteur": "camoufox",
-  "statut": "page chargée, formulaire non rendu",
+  "statut": "ok",
   "titre": "Sign up | Netlify",
-  "champs_visibles": 0,
-  "capture": "tests/captures/netlify.png"
+  "apres_clic": true,
+  "champs_visibles": 1,
+  "remplis": 1,
+  "non_reconnus": 0,
+  "cases_a_cocher": 0,
+  "detail": [
+   {
+    "champ": "email",
+    "selecteur": "identifier",
+    "signature": "identifier | identifierid | adresse e-mail ou telephone | username webauthn | text",
+    "valeur_ecrite": "camilleperrin42ab12@maxxspace.com"
+   }
+  ],
+  "suspects": []
  },
  {
   "site": "Reddit",
@@ -41,9 +113,10 @@
   "moteur": "camoufox",
   "statut": "ok",
   "titre": "Bienvenue sur Reddit",
-  "champs_visibles": 2,
+  "champs_visibles": 1,
   "remplis": 1,
   "non_reconnus": 0,
+  "cases_a_cocher": 1,
   "detail": [
    {
     "champ": "email",
@@ -61,6 +134,6 @@
   "statut": "mur anti-robot",
   "titre": "Un instant…",
   "champs_visibles": 0,
-  "capture": "tests/captures/ricardo-ch.png"
+  "capture": "tests/captures/camoufox/ricardo-ch.png"
  }
 ]

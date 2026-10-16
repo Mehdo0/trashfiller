@@ -4,7 +4,7 @@
   "url": "https://gitlab.com/users/sign_up",
   "statut": "ok",
   "titre": "Sign up · GitLab",
-  "champs_visibles": 6,
+  "champs_visibles": 5,
   "remplis": 5,
   "non_reconnus": 0,
   "sans_valeur": [],
@@ -40,6 +40,7 @@
     "valeur_ecrite": "Trash!Aa1Bc2De3"
    }
   ],
+  "cases_a_cocher": 1,
   "bandeau_absent_sans_chrome": true,
   "suspects": []
  },
@@ -49,7 +50,7 @@
   "statut": "page chargée, aucun champ visible",
   "titre": "github.com",
   "champs_visibles": 0,
-  "capture": "tests/captures/github.png"
+  "capture": "tests/captures/chrome/github.png"
  },
  {
   "site": "Mastodon.social",
@@ -57,7 +58,7 @@
   "statut": "ok",
   "apres_clic": true,
   "titre": "S’inscrire - Mastodon",
-  "champs_visibles": 8,
+  "champs_visibles": 7,
   "remplis": 7,
   "non_reconnus": 0,
   "sans_valeur": [],
@@ -87,24 +88,25 @@
     "valeur_ecrite": "Trash!Aa1Bc2De3"
    },
    {
-    "champ": "naissance",
+    "champ": "jour",
     "selecteur": "user[date_of_birth(3i)]",
     "signature": "user[date_of_birth(3i)] | user_date_of_birth_3i | dd | jour | bday-day | text | date of birth *",
-    "valeur_ecrite": "1994-03-17"
+    "valeur_ecrite": "17"
    },
    {
-    "champ": "naissance",
+    "champ": "mois",
     "selecteur": "user[date_of_birth(2i)]",
     "signature": "user[date_of_birth(2i)] | user_date_of_birth_2i | mm | mois | bday-month | text",
-    "valeur_ecrite": "1994-03-17"
+    "valeur_ecrite": "03"
    },
    {
-    "champ": "naissance",
+    "champ": "annee",
     "selecteur": "user[date_of_birth(1i)]",
     "signature": "user[date_of_birth(1i)] | user_date_of_birth_1i | yyyy | annee | bday-year | text",
-    "valeur_ecrite": "1994-03-17"
+    "valeur_ecrite": "1994"
    }
   ],
+  "cases_a_cocher": 1,
   "bandeau_absent_sans_chrome": true,
   "suspects": []
  },
@@ -143,6 +145,7 @@
     "valeur_ecrite": "Trash!Aa1Bc2De3"
    }
   ],
+  "cases_a_cocher": 0,
   "bandeau_absent_sans_chrome": true,
   "suspects": []
  },
@@ -151,7 +154,7 @@
   "url": "https://bandcamp.com/signup",
   "statut": "ok",
   "titre": "Signup | Bandcamp",
-  "champs_visibles": 6,
+  "champs_visibles": 5,
   "remplis": 4,
   "non_reconnus": 1,
   "sans_valeur": [],
@@ -181,6 +184,7 @@
     "valeur_ecrite": "camilleperrin42ab12@maxxspace.com"
    }
   ],
+  "cases_a_cocher": 1,
   "bandeau_absent_sans_chrome": true,
   "suspects": []
  },
@@ -202,6 +206,7 @@
     "valeur_ecrite": "camilleperrin42"
    }
   ],
+  "cases_a_cocher": 0,
   "bandeau_absent_sans_chrome": true,
   "suspects": []
  },
@@ -223,6 +228,7 @@
     "valeur_ecrite": "camilleperrin42"
    }
   ],
+  "cases_a_cocher": 0,
   "bandeau_absent_sans_chrome": true,
   "suspects": []
  },
@@ -232,7 +238,7 @@
   "statut": "page chargée, aucun champ visible",
   "titre": "",
   "champs_visibles": 0,
-  "capture": "tests/captures/reddit.png"
+  "capture": "tests/captures/chrome/reddit.png"
  },
  {
   "site": "Twitch",
@@ -251,6 +257,7 @@
     "valeur_ecrite": "camilleperrin42ab12@maxxspace.com"
    }
   ],
+  "cases_a_cocher": 0,
   "bandeau_absent_sans_chrome": true,
   "suspects": []
  },
@@ -260,6 +267,6 @@
   "statut": "mur anti-robot",
   "titre": "Un instant…",
   "champs_visibles": 0,
-  "capture": "tests/captures/ricardo-ch.png"
+  "capture": "tests/captures/chrome/ricardo-ch.png"
  }
 ]
