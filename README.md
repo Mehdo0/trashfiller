@@ -179,6 +179,7 @@ background.js         service worker : boîte jetable mail.tm + stockage local
 content.js            remplissage + bandeau de validation (injecté à la demande, iframes comprises)
 popup.html/.css/.js   interface : identité, bouton remplir, boîte de réception
 icons/                icônes 16/48/128
+PRIVACY.md            politique de confidentialité (exigée par le Chrome Web Store)
 tests/                contrat, parsing, bout en bout, vraies pages + rapports et captures
 .push.py              envoi du dépôt par l'API Git Data (n'est pas poussé lui-même)
 ```
